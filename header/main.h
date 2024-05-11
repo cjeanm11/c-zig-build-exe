@@ -2,7 +2,6 @@
 #define __MAIN_H_
 #include "./tools.h"
 
-void foo(int x, int y);
-
+int foo(int x, int y);
 
 #endif
