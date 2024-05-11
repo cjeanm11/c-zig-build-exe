@@ -1,0 +1,6 @@
+-Wall
+-Werror
+-Wextra
+-Wpedantic
+-Wconversion
+-I.
