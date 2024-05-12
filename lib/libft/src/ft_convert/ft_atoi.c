@@ -1,30 +1,34 @@
 #include "libft.h"
 
-int32_t
-ft_atoi(const char* str) {
+static bool wrapped(int32_t n, int32_t old, int32_t sign) {
+    if (sign > 0) {
+        return n < old;
+    } else {
+        return n > old;
+    }
+}
+
+int32_t ft_atoi(const char* str) {
     int32_t result = 0;
     int32_t sign = 1;
+    int64_t old;
 
-    while (*str && ft_isspace(*str)) ++str;
-
+    while (ft_isspace(*str)) {
+        ++str;
+    }
     if (*str == '-') {
         sign = -1;
         ++str;
     } else if (*str == '+') {
         ++str;
     }
-
-    while (*str && ft_isdigit(*str)) {
-        int32_t digit = *str - '0';
-        if ((result > INT32_MAX / 10 || (result == INT32_MAX / 10 && digit > INT32_MAX % 10)) && sign == 1)
-            return INT32_MAX;
-        else if ((result > (uint32_t)INT32_MAX / 10 ||
-                  (result == (uint32_t)INT32_MAX / 10 && digit > (uint32_t)INT32_MAX % 10)) &&
-                 sign == -1)
-            return INT32_MIN;
-        result = result * 10 + digit;
-        ++str;
+    while (ft_isdigit(*str)) {
+        old = result;
+        result = (result * 10) + ((*str - '0') * sign);
+        if (wrapped(result, old, sign)) {
+            return -1;
+        }
+        str++;
     }
-
-    return result * sign;
+    return result;
 }

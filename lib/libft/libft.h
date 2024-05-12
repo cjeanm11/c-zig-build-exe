@@ -304,6 +304,8 @@ void		ft_putnbr_base_fd(int64_t n, const char *base, int fd);
 // Write unsigned number to file descriptor using base
 void		ft_putunbr_base_fd(uint64_t n, const char *base, int fd);
 
+
+int32_t     ft_foo(void);
 /*
 ** Linked list functions
 */

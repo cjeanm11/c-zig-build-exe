@@ -12,6 +12,7 @@ CHAR_SRC	=	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_islower.c\
 CONV_SRC	=	ft_atoi.c ft_atol.c ft_ltoa_base.c ft_ltoa.c ft_numlen.c ft_unumlen.c\
 				ft_ultoa_base.c ft_ultoa.c
 FILE_SRC	=	ft_count_lines.c ft_get_next_line.c ft_read_to_str.c ft_file_size.c
+FOO_SRC     =   ft_foo.c
 LIST_SRC	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstany.c ft_lstclear.c\
 				ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c\
 				ft_lstpop_front.c ft_lstsize.c ft_lstnext.c ft_lstall.c ft_lstcount_if.c
@@ -38,15 +39,16 @@ MATH_SRC	=	ft_vec2_add.c ft_vec2_sub.c ft_vec2_mul.c ft_deg_to_rad.c ft_rad_to_d
 				ft_clamp.c ft_clampd.c
 TIME_SRC	=	ft_gettime.c ft_timediff.c
 
-SRCS		=	$(CHAR_SRC) $(CONV_SRC) $(FILE_SRC) $(LIST_SRC) $(DLIST_SRC)\
+SRCS		=	$(CHAR_SRC) $(CONV_SRC) $(FILE_SRC) $(FOO_SRC) $(LIST_SRC) $(DLIST_SRC)\
 				$(MEM_SRC) $(PUT_SRC) $(CSTR_SRC) $(STR_SRC) $(HASH_SRC)\
-				$(MATH_SRC) $(TIME_SRC)
+				$(MATH_SRC) $(TIME_SRC) 
 
 OBJS		=	$(SRCS:%=$(OBJ)/%.o)
 
 VPATH		=	$(SRC)/ft_char $(SRC)/ft_convert $(SRC)/ft_cstr $(SRC)/ft_dlist\
-				$(SRC)/ft_file $(SRC)/ft_hash $(SRC)/ft_list $(SRC)/ft_math\
-				$(SRC)/ft_memory $(SRC)/ft_put $(SRC)/ft_string $(SRC)/ft_time
+				$(SRC)/ft_file $(SRC)/ft_foo $(SRC)/ft_hash $(SRC)/ft_list $(SRC)/ft_math\
+				$(SRC)/ft_memory $(SRC)/ft_put $(SRC)/ft_string $(SRC)/ft_time\
+				
 
 $(OBJ)/%.c.o:	%.c
 				@$(CC) $(CFLAGS) $< -o $@

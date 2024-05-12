@@ -1,20 +1,5 @@
-#include "./header/main.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-int
-foo(int x, int y) {
-    printf("bar - %d \n", add(x, y));
-    printf("%c \n", ft_tolower('s'));
-    if (ft_isalnum('d')) {
-        printf("test");
-    }
-    return add(x, y);
-};
-
-int
-main() {
-    printf("hello world %d \n", foo(2, 3));
+ 
+int main() {
     return 0;
 }
