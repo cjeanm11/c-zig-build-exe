@@ -1,4 +1,4 @@
-#include <stdbool.h> // Include for using bool type
+#include <stdbool.h> 
 
 bool
 ft_isblank(char c) {
