@@ -27,7 +27,7 @@ run-z:
 	@$<
 
 zig-cc:
-	@echo "Zig compile C"
+	@echo "Zig compile C..."
 	@zig cc src/main.c -o build/bin/a.out
 	@$<
 
@@ -54,8 +54,9 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@clang++ -c $< -o $@
 
 format:
-	@echo "Formatting source files..."
-	@find $(SRC_DIR) -name "*.c" -o -name "*.cpp" -exec $(CLANG_FORMAT) $(CLANG_FORMAT_FLAGS) {} \;  # Include both C and C++ files for formatting
+	@echo "formatting..."
+	@find $(SRC_DIR) -name "*.c" -exec $(CLANG_FORMAT) $(CLANG_FORMAT_FLAGS) {} \;
+	@find $(SRC_DIR) -name "*.cpp" -exec $(CLANG_FORMAT) $(CLANG_FORMAT_FLAGS) {} \;
 
 clean:
 	@echo "Cleaning..."
