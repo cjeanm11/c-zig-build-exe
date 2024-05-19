@@ -13,20 +13,22 @@ EXECUTABLE := $(BUILD_DIR)/bin/a.out
 
 # Default to C executable
 run: run-c
+cc: zig-cc
 
 # Run C executable
-run-c: $(EXECUTABLE)
+run-c:
 	@echo "Running C executable..."
+	@./build/bin/a.out
 	@$<
-
 
 run-z:
 	@echo "Running Zig executable..."
 	@./zig-out/bin/zig-build-exe
 	@$<
-# Run C++ executable
-run-cpp: $(EXECUTABLE)
-	@echo "Running C++ executable..."
+
+zig-cc:
+	@echo "Zig compile C"
+	@zig cc src/main.c -o build/bin/a.out
 	@$<
 
 build: clean format $(EXECUTABLE)
