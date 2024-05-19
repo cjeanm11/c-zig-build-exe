@@ -14,6 +14,14 @@ EXECUTABLE := $(BUILD_DIR)/bin/a.out
 # Default to C executable
 run: run-c
 cc: zig-cc
+c: build run-c
+z: zig
+
+zig:  
+	@rm -rf $(BUILD_DIR) zig-out
+	@zig build
+	@./zig-out/bin/zig-build-exe
+	@$<
 
 # Run C executable
 run-c:
@@ -32,7 +40,6 @@ zig-cc:
 	@$<
 
 build: clean format $(EXECUTABLE)
-	@echo "Building with Zig..."
 	@zig build
 
 # Linking object files 
