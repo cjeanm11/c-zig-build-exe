@@ -14,6 +14,11 @@ namespace ex = example_namespace;
 
 std::mutex dataMutex;
 
+struct SharedData {
+    std::mutex m;
+    int value = 0;
+};
+
 std::future<Status>
 modifyExample(std::shared_ptr<ex::Example>& example) {
     return std::async(std::launch::async, [example]() -> Status {
@@ -61,6 +66,19 @@ main() {
         return 1;
     }
 
-    std::cout << "Tasks completed successfully.\n";
+
+    std::shared_ptr<SharedData> data = std::make_shared<SharedData>();
+    auto increment = [data]() {
+        for (int i = 0; i < 100000; ++i) {
+            std::lock_guard<std::mutex> lock(data->m);
+            ++data->value;
+        }
+    };
+    std::thread t3(increment);
+    std::thread t4(increment);
+    t3.join();
+    t4.join();
+
+    std::cout << "Final value: " << data->value << std::endl; // Should be 200000
     return 0;
 }
