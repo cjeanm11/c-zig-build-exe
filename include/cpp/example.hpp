@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 
+namespace internal {
 namespace example_namespace {
 
 class Example {
@@ -29,5 +30,6 @@ private:
 };
 
 } // namespace example_namespace
+} // namespace internal
 
 #endif // EXAMPLE_H_

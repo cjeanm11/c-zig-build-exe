@@ -1,5 +1,6 @@
 #include "../../include/cpp/example.hpp"
 
+namespace internal {
 namespace example_namespace {
 
 Example::Example(const std::string& name)
@@ -28,5 +29,6 @@ void
 Example::DoSomething() const {
     std::cout << "Doing something with " << name_ << "\n";
 }
-
 } // namespace example_namespace
+
+} // namespace internal

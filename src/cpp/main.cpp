@@ -10,7 +10,7 @@
 #include <string>
 #include <thread>
 
-namespace ex = example_namespace;
+namespace ex = internal::example_namespace;
 
 std::mutex dataMutex;
 
@@ -66,7 +66,6 @@ main() {
         return 1;
     }
 
-
     std::shared_ptr<SharedData> data = std::make_shared<SharedData>();
     auto increment = [data]() {
         for (int i = 0; i < 100000; ++i) {
@@ -79,6 +78,6 @@ main() {
     t3.join();
     t4.join();
 
-    std::cout << "Final value: " << data->value << std::endl; // Should be 200000
+    std::cout << "Final value: " << data->value << std::endl; 
     return 0;
 }
