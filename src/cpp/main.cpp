@@ -78,6 +78,6 @@ main() {
     t3.join();
     t4.join();
 
-    std::cout << "Final value: " << data->value << std::endl; 
+    std::cout << "Final value: " << data->value << std::endl;
     return 0;
 }
